@@ -24,8 +24,9 @@ SVG features, as demonstrated in the below animation:
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/KjLoVZf.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_svg.mp4">
 </video>
 
 ## Animation = Time ➞ SVG
@@ -39,8 +40,9 @@ Animations can be defined as SVG images over time (plus a bit of bookkeeping suc
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/qVNDt43.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_animate.mp4">
 </video>
 
 Reanimate is not an opinionated framework, though, and also offers a more traditional keyframing tools. The example below uses an imperative API to schedule the various sub animations, transitions, and effects.
@@ -52,8 +54,9 @@ Reanimate is not an opinionated framework, though, and also offers a more tradit
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/jdEtt4b.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_keyframe.mp4">
 </video>
 
 ## Pillar I: Haskell
@@ -73,8 +76,9 @@ The following examples shows how something as seemingly complicated as fourier s
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/lvVhMXn.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_fourier.mp4">
 </video>
 
 Scripting in Haskell also gives access to the extensive body of code libraries. There are Haskell libraries for syntax highlighting, font manipulation, and much, much more. In the spirit of being a batteries-included framework, Reanimate ships with a built-in 2D physics library, called [Chipmunk2D](https://chipmunk-physics.net/). The example below demonstrates how SVG shapes can be used nearly effortlessly in a physics simulation.
@@ -86,8 +90,9 @@ Scripting in Haskell also gives access to the extensive body of code libraries. 
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/S6xfCl9.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_physics.mp4">
 </video>
 
 
@@ -107,8 +112,9 @@ The resulting SVGs can be manipulated just like any other. The below examples il
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/uZns44f.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_latex.mp4">
 </video>
 
 ## Pillar III: povray
@@ -122,8 +128,9 @@ Although incredibly expressive, SVGs are strictly limited to 2D graphics. This l
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/7nty7c5.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_povray.mp4">
 </video>
 
 
@@ -136,8 +143,9 @@ The video above uses a perspective camera, ie. objects further away appears to b
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/uTrsxvm.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_povray_ortho.mp4">
 </video>
 
 
@@ -154,8 +162,9 @@ The example below uses built-in modifiers to bend a plane into a sphere and is r
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/i1xtZgl.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_blender.mp4">
 </video>
 
 ## Pillar V: potrace
@@ -169,6 +178,7 @@ The example below uses built-in modifiers to bend a plane into a sphere and is r
   </code></pre>
 </details>
 <br/>
-<video style="width:100%" muted autoplay loop>
+<video style="width:100%;max-width:640px" muted autoplay loop>
   <source src="https://i.imgur.com/6C3pMvc.mp4">
+  <source src="https://f002.backblazeb2.com/file/reanimate/tut_glue_potrace.mp4">
 </video>

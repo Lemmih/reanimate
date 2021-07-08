@@ -172,15 +172,17 @@ mp4Arguments fps progress template target =
   , show fps
   , "-i"
   , template
+  , "-preset"
+  , "veryslow"
   , "-y"
   , "-c:v"
   , "libx264"
+  , "-tune"
+  , "animation"
   , "-vf"
   , "fps=" ++ show fps
-  , "-preset"
-  , "slow"
   , "-crf"
-  , "18"
+  , "23"
   , "-movflags"
   , "+faststart"
   , "-progress"
