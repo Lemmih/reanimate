@@ -17,8 +17,9 @@ import           Reanimate.Morph.Common (morph)
 import           Reanimate.Morph.Linear (linear)
 import           Reanimate.Svg
 
-import           Reanimate.Scene.Core   (Scene, fork, scene, wait)
-import           Reanimate.Scene.Sprite (Sprite, newSprite, newSpriteA', play, spriteModify, unVar)
+import           Reanimate.Scene.Core   (Scene, ZIndex, fork, scene, wait)
+import           Reanimate.Scene.Sprite (Frame, Sprite, destroySprite, newSprite, newSpriteA', play,
+                                         spriteDuration, spriteModify, spriteT, unVar)
 import           Reanimate.Scene.Var    (Var, modifyVar, newVar, readVar, tweenVar)
 
 -------------------------------------------------------
@@ -50,7 +51,7 @@ data ObjectData a = ObjectData
     _oBB          :: (Double, Double, Double, Double),
     _oOpacity     :: Double,
     _oShown       :: Bool,
-    _oZIndex      :: Int,
+    _oZIndex      :: ZIndex,
     _oEasing      :: Signal,
     _oScale       :: Double,
     _oScaleOrigin :: V2 Double
@@ -102,7 +103,7 @@ oShown :: Lens' (ObjectData a) Bool
 oShown = lens _oShown $ \obj val -> obj {_oShown = val}
 
 -- | Object's z-index.
-oZIndex :: Lens' (ObjectData a) Int
+oZIndex :: Lens' (ObjectData a) ZIndex
 oZIndex = lens _oZIndex $ \obj val -> obj {_oZIndex = val}
 
 -- | Easing function used when modifying object properties.
@@ -331,6 +332,39 @@ oScaleApply ObjectData {..} =
 
 uncurryV2 :: (a -> a -> b) -> V2 a -> b
 uncurryV2 fn (V2 a b) = fn a b
+
+-------------------------------------------------------------------------------
+-- Object-local sprites
+
+oFrame :: Object s a -> Frame s (SVG -> SVG)
+oFrame o = do
+  ~obj@ObjectData {..} <- unVar (objectData o)
+  pure $ \svg -> 
+    if _oShown
+      then uncurryV2 translate _oTranslate $
+        oScaleApply obj $ withGroupOpacity _oOpacity $
+          mkGroup [ _oContext svg ]
+      else None
+
+oNewSprite :: Object s a -> Frame s SVG -> Scene s (Sprite s)
+oNewSprite o gen = do
+  sprite <- newSprite $ oFrame o <*> gen
+  spriteModify sprite $ do
+    ~ObjectData {_oZIndex = z} <- unVar (objectData o)
+    pure $ \(img, _) -> (img, z)
+  return sprite
+
+oNewSpriteA :: Object s a -> Animation -> Scene s (Sprite s)
+oNewSpriteA = oNewSpriteA' SyncStretch
+
+oNewSpriteA' :: Sync -> Object s a -> Animation -> Scene s (Sprite s)
+oNewSpriteA' sync o animation =
+  oNewSprite o (getAnimationFrame sync animation <$> spriteT <*> spriteDuration)
+    <* wait (duration animation)
+
+--
+oPlay :: Object s a -> Animation -> Scene s ()
+oPlay o ani = oNewSpriteA o ani >>= destroySprite
 
 -------------------------------------------------------------------------------
 -- Graphical transformations
