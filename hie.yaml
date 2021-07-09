@@ -1,12 +1,6 @@
 cradle:
-  multi:
-    - path: "./src"
-      config: {cradle: {stack: {component: "reanimate:lib"}} }
-    - path: "./videos"
-      config: {cradle: {stack: {component: "reanimate:lib"}} }
-    - path: "./examples"
-      config: {cradle: {stack: {component: "reanimate:lib"}} }
-    - path: "./test"
-      config: {cradle: {none: }}
-    - path: "./discord-bot"
-      config: {cradle: {none: }}
+  cabal:
+    - path: "./src/"
+      component: "lib:reanimate"
+    - path: "./videos/"
+      component: "lib:reanimate"

@@ -35,5 +35,6 @@ nav:
     - Voice control: voice.md
   - Showcase:
     - Color Theory: showcase_colortheory.md
+    - Single-source shortest path: sssp.md
   - Discord bot: discord_bot.md
   - Change log: changelog.md

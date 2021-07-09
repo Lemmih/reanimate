@@ -88,7 +88,7 @@ module Reanimate.Math.Polygon
 -- import           Control.Exception
 import           Data.Hashable
 import           Data.List                  (intersect, maximumBy, sort, sortOn,
-                                             tails)
+                                             tails, nub)
 import           Data.Maybe
 import           Data.Ratio
 import           Data.Serialize
@@ -521,8 +521,9 @@ pCycles p = map (pAdjustOffset p) [0 .. pSize p-1]
 
 pCycle :: PolyCtx a => APolygon a -> Double -> APolygon a
 pCycle p 0 = p
-pCycle p t = mkPolygon $ worker 0 0
+pCycle p t = mkPolygon $ dedup $ worker 0 0
   where
+    dedup = V.fromList . nub . V.toList
     worker acc i
       | segment + acc > limit =
         V.singleton (lerp (realToFrac $ (segment + acc - limit)/segment) x y) <>
